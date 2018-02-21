@@ -1,0 +1,6 @@
+usr/local/bin/suc-qt usr/bin
+share/pixmaps/suc32.xpm usr/share/pixmaps
+share/pixmaps/suc16.xpm usr/share/pixmaps
+share/pixmaps/suc128.png usr/share/pixmaps
+debian/suc-qt.desktop usr/share/applications
+debian/suc-qt.protocol usr/share/kde4/services/

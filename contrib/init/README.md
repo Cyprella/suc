@@ -1,11 +1,11 @@
 Sample configuration files for:
 
-SystemD: nyxd.service
-Upstart: nyxd.conf
-OpenRC:  nyxd.openrc
-         nyxd.openrcconf
-CentOS:  nyxd.init
-OS X:    org.nyx.nyxd.plist
+SystemD: sucd.service
+Upstart: sucd.conf
+OpenRC:  sucd.openrc
+         sucd.openrcconf
+CentOS:  sucd.init
+OS X:    org.suc.sucd.plist
 
 have been made available to assist packagers in creating node packages here.
 

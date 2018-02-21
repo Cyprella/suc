@@ -1,9 +1,9 @@
 // Copyright (c) 2014-2017 The Dash Core developers
-// Copyright (c) 2017-2018 The Nyx Core developers
+// Copyright (c) 2017-2018 The Suc Core developers
 
 #include "cachemultimap.h"
 
-#include "test/test_nyx.h"
+#include "test/test_suc.h"
 
 #include <algorithm>
 #include <iostream>

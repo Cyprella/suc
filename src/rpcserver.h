@@ -123,7 +123,7 @@ public:
 };
 
 /**
- * Nyx RPC command dispatcher.
+ * Suc RPC command dispatcher.
  */
 class CRPCTable
 {

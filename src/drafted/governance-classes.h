@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2017 The Dash Core developers
-// Copyright (c) 2017-2018 The Nyx Core developers
+// Copyright (c) 2017-2018 The Suc Core developers
 
 /*
  * FIELDS AND CLASSIFICATION
@@ -46,7 +46,7 @@
  * =========================
  *
  *   // network
- *   CNyxNetwork lvl, network-type, network-status, network-error, milestone-status*
+ *   CSucNetwork lvl, network-type, network-status, network-error, milestone-status*
  *   CCategory lvl, category-type, status, status-error
  *   CNetworkGlobalVariable lvl, global-type, status, status-error
  *   // base: actor
@@ -80,7 +80,7 @@
  *  TREE STRUCTURE
  *  ===========================================
  * 
- *  NYX NETWORK (ROOT)
+ *  SUC NETWORK (ROOT)
  *      -> NETWORK GLOBOLS
  *          -> SWITCHES, SETTINGS
  *      -> CATEGORIES
@@ -118,7 +118,7 @@ private:
     int nLevel;
     std::string strCategory;
 
-    // Current OBJECT STATUS (see http://govman.nyx.org/index.php/Documentation_:_Status_Field)
+    // Current OBJECT STATUS (see http://govman.suc.org/index.php/Documentation_:_Status_Field)
     int nStatusID;
     std::string strStatusMessage;
 
@@ -131,7 +131,7 @@ public:
 };
 
 // // root node
-class CNyxNetwork : public CGovernanceObject
+class CSucNetwork : public CGovernanceObject
 {
 private:
     std::string strName;
@@ -139,7 +139,7 @@ private:
 
 
 public:
-    CNyxNetwork(UniValue objIn)
+    CSucNetwork(UniValue objIn)
     {
         strName = objIn["name"].get_str();
         strURL = objIn["name"].get_str();
@@ -175,9 +175,9 @@ public:
 
 };
 
-// // can be under: NyxNetwork
+// // can be under: SucNetwork
 // //   -- signature requirements : Key1(User)
-// class CNyxNetworkVariable : public CGovernanceObject
+// class CSucNetworkVariable : public CGovernanceObject
 // {
 // private:
 
@@ -280,7 +280,7 @@ public:
 //     // isRootCategory()
 //     // {
 //     //     // root categories won't have categories as parents
-//     //     return (IsType() == NyxNetwork);
+//     //     return (IsType() == SucNetwork);
 //     // }
 
 //     // isSubcategoryOf(std::string strParentName)

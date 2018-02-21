@@ -1,7 +1,7 @@
 Translation Strings Policy
 ===========================
 
-This document provides guidelines for internationalization of the Nyx Core software.
+This document provides guidelines for internationalization of the Suc Core software.
 
 How to translate?
 ------------------
@@ -85,10 +85,10 @@ In Qt code use tr's third argument for optional plurality. For example:
 This adds `<numerusform>`s to the respective `.ts` file, which can be translated separately depending on the language. In English, this is simply:
 
     <message numerus="yes">
-        <source>%n active connection(s) to Nyx network</source>
+        <source>%n active connection(s) to Suc network</source>
         <translation>
-            <numerusform>%n active connection to Nyx network</numerusform>
-            <numerusform>%n active connections to Nyx network</numerusform>
+            <numerusform>%n active connection to Suc network</numerusform>
+            <numerusform>%n active connections to Suc network</numerusform>
         </translation>
     </message>
 

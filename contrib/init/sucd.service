@@ -1,0 +1,22 @@
+[Unit]
+Description=Suc's distributed currency daemon
+After=network.target
+
+[Service]
+User=suc
+Group=suc
+
+Type=forking
+PIDFile=/var/lib/sucd/sucd.pid
+ExecStart=/usr/bin/sucd -daemon -pid=/var/lib/sucd/sucd.pid \
+-conf=/etc/suc/suc.conf -datadir=/var/lib/sucd -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

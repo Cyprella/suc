@@ -1,11 +1,11 @@
-Nyx Core 0.12.1
+Suc Core 0.12.1
 =====================
 
-This is the official reference wallet for Nyx digital currency and comprises the backbone of the Nyx peer-to-peer network. You can [download Nyx Core](https://www.nyx.org/downloads/) or [build it yourself](#building) using the guides below.
+This is the official reference wallet for Suc digital currency and comprises the backbone of the Suc peer-to-peer network. You can [download Suc Core](https://www.suc.org/downloads/) or [build it yourself](#building) using the guides below.
 
 Running
 ---------------------
-The following are some helpful notes on how to run Nyx on your native platform.
+The following are some helpful notes on how to run Suc on your native platform.
 
 ### Unix
 
@@ -16,22 +16,22 @@ Unpack the files into a directory and run:
 
 ### Windows
 
-Unpack the files into a directory, and then run nyx-qt.exe.
+Unpack the files into a directory, and then run suc-qt.exe.
 
 ### OS X
 
-Drag Nyx-Qt to your applications folder, and then run Nyx-Qt.
+Drag Suc-Qt to your applications folder, and then run Suc-Qt.
 
 ### Need Help?
 
-* See the [Nyx documentation](https://nyxpay.atlassian.net/wiki/display/DOC)
+* See the [Suc documentation](https://sucpay.atlassian.net/wiki/display/DOC)
 for help and more information.
-* Ask for help on [#nyxpay](http://webchat.freenode.net?channels=nyxpay) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=nyxpay).
-* Ask for help on the [NyxTalk](https://nyxtalk.org/) forums.
+* Ask for help on [#sucpay](http://webchat.freenode.net?channels=sucpay) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=sucpay).
+* Ask for help on the [SucTalk](https://suctalk.org/) forums.
 
 Building
 ---------------------
-The following are developer notes on how to build Nyx Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build Suc Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [OS X Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
@@ -41,7 +41,7 @@ The following are developer notes on how to build Nyx Core on your native platfo
 
 Development
 ---------------------
-The Nyx Core repo's [root README](/README.md) contains relevant information on the development process and automated testing.
+The Suc Core repo's [root README](/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Multiwallet Qt Development](multiwallet-qt.md)
@@ -57,8 +57,8 @@ The Nyx Core repo's [root README](/README.md) contains relevant information on t
 - [Dnsseed Policy](dnsseed-policy.md)
 
 ### Resources
-* Discuss on the [NyxTalk](https://nyxtalk.org/) forums, in the Development & Technical Discussion board.
-* Discuss on [#nyxpay](http://webchat.freenode.net/?channels=nyxpay) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=nyxpay).
+* Discuss on the [SucTalk](https://suctalk.org/) forums, in the Development & Technical Discussion board.
+* Discuss on [#sucpay](http://webchat.freenode.net/?channels=sucpay) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=sucpay).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)

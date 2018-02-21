@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Suc
+Comment=Suc P2P Cryptocurrency
+Exec=suc-qt %u
+Terminal=false
+Type=Application
+Icon=suc128
+MimeType=x-scheme-handler/suc;
+Categories=Office;Finance;
+Name[en_AU]=suc-qt.desktop

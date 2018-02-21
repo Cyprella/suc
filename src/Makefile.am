@@ -55,15 +55,15 @@ TESTS =
 BENCHMARKS =
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += nyxd
+  bin_PROGRAMS += sucd
 endif
 
 if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += nyx-cli nyx-tx
+  bin_PROGRAMS += suc-cli suc-tx
 endif
 
 .PHONY: FORCE check-symbols check-security
-# nyx core #
+# suc core #
 BITCOIN_CORE_H = \
   activemasternode.h \
   addressindex.h \
@@ -191,7 +191,7 @@ obj/build.h: FORCE
 	  $(abs_top_srcdir)
 libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
-# server: shared between nyxd and nyx-qt
+# server: shared between sucd and suc-qt
 libbitcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
 libbitcoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_server_a_SOURCES = \
@@ -249,7 +249,7 @@ libbitcoin_zmq_a_SOURCES = \
 endif
 
 
-# wallet: shared between nyxd and nyx-qt, but only linked
+# wallet: shared between sucd and suc-qt, but only linked
 # when wallet enabled
 libbitcoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
@@ -298,7 +298,7 @@ crypto_libbitcoin_crypto_a_SOURCES += \
   crypto/neoscrypt.c \
   crypto/neoscrypt.h  
 
-# common: shared between nyxd, and nyx-qt and non-server tools
+# common: shared between sucd, and suc-qt and non-server tools
 libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_common_a_SOURCES = \
@@ -355,7 +355,7 @@ if GLIBC_BACK_COMPAT
 libbitcoin_util_a_SOURCES += compat/glibc_compat.cpp
 endif
 
-# cli: shared between nyx-cli and nyx-qt
+# cli: shared between suc-cli and suc-qt
 libbitcoin_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libbitcoin_cli_a_SOURCES = \
@@ -366,16 +366,16 @@ nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
 # bitcoind binary #
-nyxd_SOURCES = nyxd.cpp
-nyxd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-nyxd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-nyxd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+sucd_SOURCES = sucd.cpp
+sucd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+sucd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+sucd_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-nyxd_SOURCES += nyxd-res.rc
+sucd_SOURCES += sucd-res.rc
 endif
 
-nyxd_LDADD = \
+sucd_LDADD = \
   $(LIBBITCOIN_SERVER) \
   $(LIBBITCOIN_COMMON) \
   $(LIBUNIVALUE) \
@@ -386,50 +386,50 @@ nyxd_LDADD = \
   $(LIBSECP256K1)
 
 if ENABLE_ZMQ
-nyxd_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+sucd_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
 
 if ENABLE_WALLET
-nyxd_LDADD += libbitcoin_wallet.a
+sucd_LDADD += libbitcoin_wallet.a
 endif
 
-nyxd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
+sucd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
 
-# nyx-cli binary #
-nyx_cli_SOURCES = nyx-cli.cpp
-nyx_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-nyx_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-nyx_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# suc-cli binary #
+suc_cli_SOURCES = suc-cli.cpp
+suc_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+suc_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+suc_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-nyx_cli_SOURCES += nyx-cli-res.rc
+suc_cli_SOURCES += suc-cli-res.rc
 endif
 
-nyx_cli_LDADD = \
+suc_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_UTIL)
-nyx_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+suc_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
-# nyx-tx binary #
-nyx_tx_SOURCES = nyx-tx.cpp
-nyx_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-nyx_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-nyx_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# suc-tx binary #
+suc_tx_SOURCES = suc-tx.cpp
+suc_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+suc_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+suc_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-nyx_tx_SOURCES += nyx-tx-res.rc
+suc_tx_SOURCES += suc-tx-res.rc
 endif
 
-nyx_tx_LDADD = \
+suc_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
-nyx_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
+suc_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #
 
 # bitcoinconsensus library #

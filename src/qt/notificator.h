@@ -6,7 +6,7 @@
 #define BITCOIN_QT_NOTIFICATOR_H
 
 #if defined(HAVE_CONFIG_H)
-#include "config/nyx-config.h"
+#include "config/suc-config.h"
 #endif
 
 #include <QIcon>

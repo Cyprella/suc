@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin Core developers
 // Copyright (c) 2014-2017 The Dash Core developers
-// Copyright (c) 2017-2018 The Nyx Core developers
+// Copyright (c) 2017-2018 The Suc Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -70,8 +70,8 @@ public:
         consensus.BIP34Height = 227931;
         consensus.BIP34Hash = uint256S("0x000000000000024b89b42a942fe0d9fea3bb44ab7bd1b19115dd6a759c0808b8");
         consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
-        consensus.nPowTargetTimespan = 60 * 60; // Nyx: 60 minutes 30 blocks
-        consensus.nPowTargetSpacing = 2 * 60; // Nyx: 2 minutes
+        consensus.nPowTargetTimespan = 60 * 60; // Suc: 60 minutes 30 blocks
+        consensus.nPowTargetSpacing = 2 * 60; // Suc: 2 minutes
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
@@ -105,23 +105,23 @@ public:
         assert(genesis.hashMerkleRoot == uint256S("0xbb3755d2f47f9f30081b068778b2c607fa86359d74056801f7d40c2f1f697375"));
 
 
-        vSeeds.push_back(CDNSSeedData("node_nl", "node1.nyxcoin.org"));
-        vSeeds.push_back(CDNSSeedData("node_ny", "node2.nyxcoin.org"));
-        vSeeds.push_back(CDNSSeedData("node_tx", "node3.nyxcoin.org"));
-        vSeeds.push_back(CDNSSeedData("node_ca", "node4.nyxcoin.org"));
-        vSeeds.push_back(CDNSSeedData("node_as", "node5.nyxcoin.org"));		
+        vSeeds.push_back(CDNSSeedData("node_nl", "node1.succoin.org"));
+        vSeeds.push_back(CDNSSeedData("node_ny", "node2.succoin.org"));
+        vSeeds.push_back(CDNSSeedData("node_tx", "node3.succoin.org"));
+        vSeeds.push_back(CDNSSeedData("node_ca", "node4.succoin.org"));
+        vSeeds.push_back(CDNSSeedData("node_as", "node5.succoin.org"));		
 
-        // Nyx addresses start with 'N'
+        // Suc addresses start with 'N'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,53);
-        // Nyx script addresses start with '9'
+        // Suc script addresses start with '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,20);
-        // Nyx private keys start with 'x' or 'y'
+        // Suc private keys start with 'x' or 'y'
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,139);
-        // Nyx BIP32 pubkeys start with 'xpub' (Bitcoin defaults)
+        // Suc BIP32 pubkeys start with 'xpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
-        // Nyx BIP32 prvkeys start with 'xprv' (Bitcoin defaults)
+        // Suc BIP32 prvkeys start with 'xprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
-        // Nyx BIP44 coin type is '5'
+        // Suc BIP44 coin type is '5'
         base58Prefixes[EXT_COIN_TYPE]  = boost::assign::list_of(0x80)(0x00)(0x00)(0x05).convert_to_container<std::vector<unsigned char> >();
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
@@ -181,8 +181,8 @@ public:
         consensus.BIP34Height = 21111;
         consensus.BIP34Hash = uint256S("0x0000000023b3a96d3484e5abb3755c413e7d41500f8e2a5c3f0dd01299cd8ef8");
         consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
-        consensus.nPowTargetTimespan = 2 * 60; // Nyx: 2 minutes
-        consensus.nPowTargetSpacing = 2 * 60; // Nyx: 2 minutes
+        consensus.nPowTargetTimespan = 2 * 60; // Suc: 2 minutes
+        consensus.nPowTargetSpacing = 2 * 60; // Suc: 2 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 1512; // 75% for testchains
@@ -212,23 +212,23 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        vSeeds.push_back(CDNSSeedData("node_nl", "node1.nyxcoin.org"));
-        vSeeds.push_back(CDNSSeedData("node_ny", "node2.nyxcoin.org"));
-        vSeeds.push_back(CDNSSeedData("node_tx", "node3.nyxcoin.org"));
-        vSeeds.push_back(CDNSSeedData("node_ca", "node4.nyxcoin.org"));
-        vSeeds.push_back(CDNSSeedData("node_as", "node5.nyxcoin.org"));			
+        vSeeds.push_back(CDNSSeedData("node_nl", "node1.succoin.org"));
+        vSeeds.push_back(CDNSSeedData("node_ny", "node2.succoin.org"));
+        vSeeds.push_back(CDNSSeedData("node_tx", "node3.succoin.org"));
+        vSeeds.push_back(CDNSSeedData("node_ca", "node4.succoin.org"));
+        vSeeds.push_back(CDNSSeedData("node_as", "node5.succoin.org"));			
 
-        // Testnet Nyx addresses start with 'y'
+        // Testnet Suc addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,140);
-        // Testnet Nyx script addresses start with '8' or '9'
+        // Testnet Suc script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,19);
         // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-        // Testnet Nyx BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Testnet Suc BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-        // Testnet Nyx BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Testnet Suc BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
-        // Testnet Nyx BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet Suc BIP44 coin type is '1' (All coin's testnet default)
         base58Prefixes[EXT_COIN_TYPE]  = boost::assign::list_of(0x80)(0x00)(0x00)(0x01).convert_to_container<std::vector<unsigned char> >();
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
@@ -284,8 +284,8 @@ public:
         consensus.BIP34Height = -1; // BIP34 has not necessarily activated on regtest
         consensus.BIP34Hash = uint256();
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 2 * 60; // Nyx: 2 minutes
-        consensus.nPowTargetSpacing = 2 * 60; // Nyx: 2 minutes
+        consensus.nPowTargetTimespan = 2 * 60; // Suc: 2 minutes
+        consensus.nPowTargetSpacing = 2 * 60; // Suc: 2 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
         consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
@@ -328,17 +328,17 @@ public:
             0,
             500
         };
-        // Regtest Nyx addresses start with 'y'
+        // Regtest Suc addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,140);
-        // Regtest Nyx script addresses start with '8' or '9'
+        // Regtest Suc script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,19);
         // Regtest private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-        // Regtest Nyx BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Regtest Suc BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-        // Regtest Nyx BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Regtest Suc BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
-        // Regtest Nyx BIP44 coin type is '1' (All coin's testnet default)
+        // Regtest Suc BIP44 coin type is '1' (All coin's testnet default)
         base58Prefixes[EXT_COIN_TYPE]  = boost::assign::list_of(0x80)(0x00)(0x00)(0x01).convert_to_container<std::vector<unsigned char> >();
    }
 };

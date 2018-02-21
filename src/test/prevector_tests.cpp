@@ -9,7 +9,7 @@
 #include "serialize.h"
 #include "streams.h"
 
-#include "test/test_nyx.h"
+#include "test/test_suc.h"
 
 #include <boost/test/unit_test.hpp>
 

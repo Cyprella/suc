@@ -1,17 +1,17 @@
-INNOVATIVE and DECENTRALIZED crypto currency that have the bases (fast, secure and anonymous transactions, low fees) to become the best digital payment asset for buying/selling goods and service around the world. NYX will also be the starting point around which we will create a complex system of tools and services for ecommerce, trading and crypto world.
+INNOVATIVE and DECENTRALIZED crypto currency that have the bases (fast, secure and anonymous transactions, low fees) to become the best digital payment asset for buying/selling goods and service around the world. SUC will also be the starting point around which we will create a complex system of tools and services for ecommerce, trading and crypto world.
 
-Anonymized transactions using coin mixing technology. 1-Second-Transactions. Network stability with masternodes, each is secured with a collateral of 1.000 NYX.
+Anonymized transactions using coin mixing technology. 1-Second-Transactions. Network stability with masternodes, each is secured with a collateral of 1.000 SUC.
 
-For further information visit us at [nyxcoin.org](https://www.nyxcoin.org/)
+For further information visit us at [succoin.org](https://www.succoin.org/)
 
 # Coin Specs
 
 • PoW Algorithm: NeoScrypt  
-• Premine: (#1 Block) 1,000,000 NYX 
+• Premine: (#1 Block) 1,000,000 SUC 
 • Type: POW + Masternode
 • Block Time: 120 Seconds  
 • PoW Max Coin Output/Supply: 30,350,000 
-• Masternode Requirements: 1,000 NYX  
+• Masternode Requirements: 1,000 SUC  
 • Maturity: 101 Confirmations   
 
 # Block Reward Distribution
@@ -28,25 +28,25 @@ For further information visit us at [nyxcoin.org](https://www.nyxcoin.org/)
 </tr>
 <tr>
 <td>1 - 64800</td>
-<td>10 NYX</td>
+<td>10 SUC</td>
 <td>20%</td>
 <td>80%</td>
 </tr>
 <tr>
 <td>64801 - 129600</td>
-<td>15 NYX</td>
+<td>15 SUC</td>
 <td>30%</td>
 <td>70%</td>
 </tr>
 <tr>
 <td>129601 - 262800</td>
-<td>20 NYX</td>
+<td>20 SUC</td>
 <td>40%</td>
 <td>60%</td>
 </tr>
 <tr>
 <td>262801 - 525600</td>
-<td>10 NYX</td>
+<td>10 SUC</td>
 <td>40%</td>
 <td>60%</td>
 </tr>
@@ -66,14 +66,14 @@ For further information visit us at [nyxcoin.org](https://www.nyxcoin.org/)
 License
 -------
 
-NYX Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+SUC Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
 Development Process
 -------------------
 
 The `master` branch is meant to be stable. Development is normally done in separate branches.
-[Tags](https://github.com/nyxpay/nyx/tags) are created to indicate new official,
+[Tags](https://github.com/sucpay/suc/tags) are created to indicate new official,
 stable release versions of Vivo Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).

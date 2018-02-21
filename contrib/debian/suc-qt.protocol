@@ -1,0 +1,11 @@
+[Protocol]
+exec=suc-qt '%u'
+protocol=suc
+input=none
+output=none
+helper=true
+listing=
+reading=false
+writing=false
+makedir=false
+deleting=false

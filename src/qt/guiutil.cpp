@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2017 The Dash Core developers
-// Copyright (c) 2017-2018 The Nyx Core developers
+// Copyright (c) 2017-2018 The Suc Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -117,7 +117,7 @@ void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent)
 #if QT_VERSION >= 0x040700
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
-    widget->setPlaceholderText(QObject::tr("Enter a Nyx address (e.g. %1)").arg("XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg"));
+    widget->setPlaceholderText(QObject::tr("Enter a Suc address (e.g. %1)").arg("XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg"));
 #endif
     widget->setValidator(new BitcoinAddressEntryValidator(parent));
     widget->setCheckValidator(new BitcoinAddressCheckValidator(parent));
@@ -134,8 +134,8 @@ void setupAmountWidget(QLineEdit *widget, QWidget *parent)
 
 bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
 {
-    // return if URI is not valid or is no nyx: URI
-    if(!uri.isValid() || uri.scheme() != QString("nyx"))
+    // return if URI is not valid or is no suc: URI
+    if(!uri.isValid() || uri.scheme() != QString("suc"))
         return false;
 
     SendCoinsRecipient rv;
@@ -184,7 +184,7 @@ bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!BitcoinUnits::parse(BitcoinUnits::NYX, i->second, &rv.amount))
+                if(!BitcoinUnits::parse(BitcoinUnits::SUC, i->second, &rv.amount))
                 {
                     return false;
                 }
@@ -204,13 +204,13 @@ bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
 
 bool parseBitcoinURI(QString uri, SendCoinsRecipient *out)
 {
-    // Convert nyx:// to nyx:
+    // Convert suc:// to suc:
     //
-    //    Cannot handle this later, because nyx:// will cause Qt to see the part after // as host,
+    //    Cannot handle this later, because suc:// will cause Qt to see the part after // as host,
     //    which will lower-case it (and thus invalidate the address).
-    if(uri.startsWith("nyx://", Qt::CaseInsensitive))
+    if(uri.startsWith("suc://", Qt::CaseInsensitive))
     {
-        uri.replace(0, 7, "nyx:");
+        uri.replace(0, 7, "suc:");
     }
     QUrl uriInstance(uri);
     return parseBitcoinURI(uriInstance, out);
@@ -218,12 +218,12 @@ bool parseBitcoinURI(QString uri, SendCoinsRecipient *out)
 
 QString formatBitcoinURI(const SendCoinsRecipient &info)
 {
-    QString ret = QString("nyx:%1").arg(info.address);
+    QString ret = QString("suc:%1").arg(info.address);
     int paramCount = 0;
 
     if (info.amount)
     {
-        ret += QString("?amount=%1").arg(BitcoinUnits::format(BitcoinUnits::NYX, info.amount, false, BitcoinUnits::separatorNever));
+        ret += QString("?amount=%1").arg(BitcoinUnits::format(BitcoinUnits::SUC, info.amount, false, BitcoinUnits::separatorNever));
         paramCount++;
     }
 
@@ -430,7 +430,7 @@ void openConfigfile()
 {
     boost::filesystem::path pathConfig = GetConfigFile();
 
-    /* Open nyx.conf with the associated application */
+    /* Open suc.conf with the associated application */
     if (boost::filesystem::exists(pathConfig))
         QDesktopServices::openUrl(QUrl::fromLocalFile(boostPathToQString(pathConfig)));
 }
@@ -639,15 +639,15 @@ boost::filesystem::path static StartupShortcutPath()
 {
     std::string chain = ChainNameFromCommandLine();
     if (chain == CBaseChainParams::MAIN)
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "Nyx.lnk";
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "Suc.lnk";
     if (chain == CBaseChainParams::TESTNET) // Remove this special case when CBaseChainParams::TESTNET = "testnet4"
-        return GetSpecialFolderPath(CSIDL_STARTUP) / "Nyx (testnet).lnk";
-    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("Nyx (%s).lnk", chain);
+        return GetSpecialFolderPath(CSIDL_STARTUP) / "Suc (testnet).lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / strprintf("Suc (%s).lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
 {
-    // check for Nyx*.lnk
+    // check for Suc*.lnk
     return boost::filesystem::exists(StartupShortcutPath());
 }
 
@@ -739,8 +739,8 @@ boost::filesystem::path static GetAutostartFilePath()
 {
     std::string chain = ChainNameFromCommandLine();
     if (chain == CBaseChainParams::MAIN)
-        return GetAutostartDir() / "nyx.desktop";
-    return GetAutostartDir() / strprintf("nyx-%s.lnk", chain);
+        return GetAutostartDir() / "suc.desktop";
+    return GetAutostartDir() / strprintf("suc-%s.lnk", chain);
 }
 
 bool GetStartOnSystemStartup()
@@ -779,11 +779,11 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         if (!optionFile.good())
             return false;
         std::string chain = ChainNameFromCommandLine();
-        // Write a nyx.desktop file to the autostart directory:
+        // Write a suc.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
         if (chain == CBaseChainParams::MAIN)
-            optionFile << "Name=Nyx\n";
+            optionFile << "Name=Suc\n";
         else
             optionFile << strprintf("Name=Bitcoin (%s)\n", chain);
         optionFile << "Exec=" << pszExePath << strprintf(" -min -testnet=%d -regtest=%d\n", GetBoolArg("-testnet", false), GetBoolArg("-regtest", false));
@@ -804,7 +804,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
 LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef findUrl);
 LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef findUrl)
 {
-    // loop through the list of startup items and try to find the Nyx Core app
+    // loop through the list of startup items and try to find the Suc Core app
     CFArrayRef listSnapshot = LSSharedFileListCopySnapshot(list, NULL);
     for(int i = 0; i < CFArrayGetCount(listSnapshot); i++) {
         LSSharedFileListItemRef item = (LSSharedFileListItemRef)CFArrayGetValueAtIndex(listSnapshot, i);
@@ -849,7 +849,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
     LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, bitcoinAppUrl);
 
     if(fAutoStart && !foundItem) {
-        // add Nyx Core app to startup item list
+        // add Suc Core app to startup item list
         LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemBeforeFirst, NULL, NULL, bitcoinAppUrl, NULL, NULL);
     }
     else if(!fAutoStart && foundItem) {

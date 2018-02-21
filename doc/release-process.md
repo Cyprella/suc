@@ -1,7 +1,7 @@
 Release Process
 ====================
 
-* Update translations, see [translation_process.md](https://github.com/nyxpay/nyx/blob/master/doc/translation_process.md#syncing-with-transifex)
+* Update translations, see [translation_process.md](https://github.com/sucpay/suc/blob/master/doc/translation_process.md#syncing-with-transifex)
 * Update hardcoded [seeds](/contrib/seeds)
 
 * * *
@@ -10,14 +10,14 @@ Release Process
 Check out the source code in the following directory hierarchy.
 
 	cd /path/to/your/toplevel/build
-	git clone https://github.com/nyxpay/gitian.sigs.git
-	git clone https://github.com/nyxpay/nyx-detached-sigs.git
+	git clone https://github.com/sucpay/gitian.sigs.git
+	git clone https://github.com/sucpay/suc-detached-sigs.git
 	git clone https://github.com/devrandom/gitian-builder.git
-	git clone https://github.com/nyxpay/nyx.git
+	git clone https://github.com/sucpay/suc.git
 
-###Nyx Core maintainers/release engineers, update (commit) version in sources
+###Suc Core maintainers/release engineers, update (commit) version in sources
 
-	pushd ./nyx
+	pushd ./suc
 	contrib/verifysfbinaries/verify.sh
 	configure.ac
 	doc/README*
@@ -40,7 +40,7 @@ Check out the source code in the following directory hierarchy.
 
  Setup Gitian descriptors:
 
-	pushd ./nyx
+	pushd ./suc
 	export SIGNER=(your Gitian key, ie bluematt, sipa, etc)
 	export VERSION=(new version, e.g. 0.8.0)
 	git fetch
@@ -76,52 +76,52 @@ Check out the source code in the following directory hierarchy.
 
 By default, Gitian will fetch source files as needed. To cache them ahead of time:
 
-	make -C ../nyx/depends download SOURCES_PATH=`pwd`/cache/common
+	make -C ../suc/depends download SOURCES_PATH=`pwd`/cache/common
 
 Only missing files will be fetched, so this is safe to re-run for each build.
 
 NOTE: Offline builds must use the --url flag to ensure Gitian fetches only from local URLs. For example:
 ```
-./bin/gbuild --url nyx=/path/to/nyx,signature=/path/to/sigs {rest of arguments}
+./bin/gbuild --url suc=/path/to/suc,signature=/path/to/sigs {rest of arguments}
 ```
 The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 
-###Build and sign Nyx Core for Linux, Windows, and OS X:
+###Build and sign Suc Core for Linux, Windows, and OS X:
 
-	./bin/gbuild --commit nyx=v${VERSION} ../nyx/contrib/gitian-descriptors/gitian-linux.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../nyx/contrib/gitian-descriptors/gitian-linux.yml
-	mv build/out/nyx-*.tar.gz build/out/src/nyx-*.tar.gz ../
+	./bin/gbuild --commit suc=v${VERSION} ../suc/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../suc/contrib/gitian-descriptors/gitian-linux.yml
+	mv build/out/suc-*.tar.gz build/out/src/suc-*.tar.gz ../
 
-	./bin/gbuild --commit nyx=v${VERSION} ../nyx/contrib/gitian-descriptors/gitian-win.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../nyx/contrib/gitian-descriptors/gitian-win.yml
-	mv build/out/nyx-*-win-unsigned.tar.gz inputs/nyx-win-unsigned.tar.gz
-	mv build/out/nyx-*.zip build/out/nyx-*.exe ../
+	./bin/gbuild --commit suc=v${VERSION} ../suc/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../suc/contrib/gitian-descriptors/gitian-win.yml
+	mv build/out/suc-*-win-unsigned.tar.gz inputs/suc-win-unsigned.tar.gz
+	mv build/out/suc-*.zip build/out/suc-*.exe ../
 
-	./bin/gbuild --commit nyx=v${VERSION} ../nyx/contrib/gitian-descriptors/gitian-osx.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../nyx/contrib/gitian-descriptors/gitian-osx.yml
-	mv build/out/nyx-*-osx-unsigned.tar.gz inputs/nyx-osx-unsigned.tar.gz
-	mv build/out/nyx-*.tar.gz build/out/nyx-*.dmg ../
+	./bin/gbuild --commit suc=v${VERSION} ../suc/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../suc/contrib/gitian-descriptors/gitian-osx.yml
+	mv build/out/suc-*-osx-unsigned.tar.gz inputs/suc-osx-unsigned.tar.gz
+	mv build/out/suc-*.tar.gz build/out/suc-*.dmg ../
 	popd
 
   Build output expected:
 
-  1. source tarball (nyx-${VERSION}.tar.gz)
-  2. linux 32-bit and 64-bit dist tarballs (nyx-${VERSION}-linux[32|64].tar.gz)
-  3. windows 32-bit and 64-bit unsigned installers and dist zips (nyx-${VERSION}-win[32|64]-setup-unsigned.exe, nyx-${VERSION}-win[32|64].zip)
-  4. OS X unsigned installer and dist tarball (nyx-${VERSION}-osx-unsigned.dmg, nyx-${VERSION}-osx64.tar.gz)
+  1. source tarball (suc-${VERSION}.tar.gz)
+  2. linux 32-bit and 64-bit dist tarballs (suc-${VERSION}-linux[32|64].tar.gz)
+  3. windows 32-bit and 64-bit unsigned installers and dist zips (suc-${VERSION}-win[32|64]-setup-unsigned.exe, suc-${VERSION}-win[32|64].zip)
+  4. OS X unsigned installer and dist tarball (suc-${VERSION}-osx-unsigned.dmg, suc-${VERSION}-osx64.tar.gz)
   5. Gitian signatures (in gitian.sigs/${VERSION}-<linux|{win,osx}-unsigned>/(your Gitian key)/
 
 ###Verify other gitian builders signatures to your own. (Optional)
 
   Add other gitian builders keys to your gpg keyring
 
-	gpg --import ../nyx/contrib/gitian-downloader/*.pgp
+	gpg --import ../suc/contrib/gitian-downloader/*.pgp
 
   Verify the signatures
 
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../nyx/contrib/gitian-descriptors/gitian-linux.yml
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../nyx/contrib/gitian-descriptors/gitian-win.yml
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../nyx/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../suc/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../suc/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../suc/contrib/gitian-descriptors/gitian-osx.yml
 
 	popd
 
@@ -139,25 +139,25 @@ Commit your signature to gitian.sigs:
 
   Wait for Windows/OS X detached signatures:
 	Once the Windows/OS X builds each have 3 matching signatures, they will be signed with their respective release keys.
-	Detached signatures will then be committed to the [nyx-detached-sigs](https://github.com/nyxpay/nyx-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
+	Detached signatures will then be committed to the [suc-detached-sigs](https://github.com/sucpay/suc-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
 
   Create (and optionally verify) the signed OS X binary:
 
 	pushd ./gitian-builder
-	./bin/gbuild -i --commit signature=v${VERSION} ../nyx/contrib/gitian-descriptors/gitian-osx-signer.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../nyx/contrib/gitian-descriptors/gitian-osx-signer.yml
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../nyx/contrib/gitian-descriptors/gitian-osx-signer.yml
-	mv build/out/nyx-osx-signed.dmg ../nyx-${VERSION}-osx.dmg
+	./bin/gbuild -i --commit signature=v${VERSION} ../suc/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../suc/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../suc/contrib/gitian-descriptors/gitian-osx-signer.yml
+	mv build/out/suc-osx-signed.dmg ../suc-${VERSION}-osx.dmg
 	popd
 
   Create (and optionally verify) the signed Windows binaries:
 
 	pushd ./gitian-builder
-	./bin/gbuild -i --commit signature=v${VERSION} ../nyx/contrib/gitian-descriptors/gitian-win-signer.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../nyx/contrib/gitian-descriptors/gitian-win-signer.yml
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../nyx/contrib/gitian-descriptors/gitian-win-signer.yml
-	mv build/out/nyx-*win64-setup.exe ../nyx-${VERSION}-win64-setup.exe
-	mv build/out/nyx-*win32-setup.exe ../nyx-${VERSION}-win32-setup.exe
+	./bin/gbuild -i --commit signature=v${VERSION} ../suc/contrib/gitian-descriptors/gitian-win-signer.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../suc/contrib/gitian-descriptors/gitian-win-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../suc/contrib/gitian-descriptors/gitian-win-signer.yml
+	mv build/out/suc-*win64-setup.exe ../suc-${VERSION}-win64-setup.exe
+	mv build/out/suc-*win32-setup.exe ../suc-${VERSION}-win32-setup.exe
 	popd
 
 Commit your signature for the signed OS X/Windows binaries:
@@ -182,21 +182,21 @@ rm SHA256SUMS
 (the digest algorithm is forced to sha256 to avoid confusion of the `Hash:` header that GPG adds with the SHA256 used for the files)
 Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spurious/nonsensical entry.
 
-- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the nyx.org server
+- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the suc.org server
 
-- Update nyx.org
+- Update suc.org
 
 - Announce the release:
 
-  - Release on Nyx forum: https://www.nyx.org/forum/topic/official-announcements.54/
+  - Release on Suc forum: https://www.suc.org/forum/topic/official-announcements.54/
 
-  - Nyx-development mailing list
+  - Suc-development mailing list
 
-  - Update title of #nyxpay on Freenode IRC
+  - Update title of #sucpay on Freenode IRC
 
-  - Optionally reddit /r/Nyxpay, ... but this will usually sort out itself
+  - Optionally reddit /r/Sucpay, ... but this will usually sort out itself
 
-- Notify flare so that he can start building [the PPAs](https://launchpad.net/~nyx.org/+archive/ubuntu/nyx)
+- Notify flare so that he can start building [the PPAs](https://launchpad.net/~suc.org/+archive/ubuntu/suc)
 
 - Add release notes for the new version to the directory `doc/release-notes` in git master
 

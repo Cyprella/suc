@@ -137,7 +137,7 @@
   </layout>
  </widget>
  <resources>
-  <include location="../nyx.qrc"/>
+  <include location="../suc.qrc"/>
  </resources>
  <connections/>
 </ui>

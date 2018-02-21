@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
 // Copyright (c) 2014-2017 The Dash Core developers
-// Copyright (c) 2017-2018 The Nyx Core developers
+// Copyright (c) 2017-2018 The Suc Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -244,11 +244,11 @@ UniValue stop(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "stop\n"
-            "\nStop Nyx Core server.");
+            "\nStop Suc Core server.");
     // Event loop will exit after current HTTP requests have been handled, so
     // this reply will get back to the client.
     StartShutdown();
-    return "Nyx Core server stopping";
+    return "Suc Core server stopping";
 }
 
 /**
@@ -343,19 +343,19 @@ static const CRPCCommand vRPCCommands[] =
     { "hidden",             "resendwallettransactions", &resendwallettransactions, true},
 #endif
 
-    /* Nyx features */
-    { "nyx",               "masternode",             &masternode,             true  },
-    { "nyx",               "masternodelist",         &masternodelist,         true  },
-    { "nyx",               "masternodebroadcast",    &masternodebroadcast,    true  },
-    { "nyx",               "gobject",                &gobject,                true  },
-    { "nyx",               "getgovernanceinfo",      &getgovernanceinfo,      true  },
-    { "nyx",               "getsuperblockbudget",    &getsuperblockbudget,    true  },
-    { "nyx",               "voteraw",                &voteraw,                true  },
-    { "nyx",               "mnsync",                 &mnsync,                 true  },
-    { "nyx",               "spork",                  &spork,                  true  },
-    { "nyx",               "getpoolinfo",            &getpoolinfo,            true  },
+    /* Suc features */
+    { "suc",               "masternode",             &masternode,             true  },
+    { "suc",               "masternodelist",         &masternodelist,         true  },
+    { "suc",               "masternodebroadcast",    &masternodebroadcast,    true  },
+    { "suc",               "gobject",                &gobject,                true  },
+    { "suc",               "getgovernanceinfo",      &getgovernanceinfo,      true  },
+    { "suc",               "getsuperblockbudget",    &getsuperblockbudget,    true  },
+    { "suc",               "voteraw",                &voteraw,                true  },
+    { "suc",               "mnsync",                 &mnsync,                 true  },
+    { "suc",               "spork",                  &spork,                  true  },
+    { "suc",               "getpoolinfo",            &getpoolinfo,            true  },
 #ifdef ENABLE_WALLET
-    { "nyx",               "privatesend",            &privatesend,            false },
+    { "suc",               "privatesend",            &privatesend,            false },
 
     /* Wallet */
     { "wallet",             "keepass",                &keepass,                true },
@@ -578,7 +578,7 @@ std::vector<std::string> CRPCTable::listCommands() const
 
 std::string HelpExampleCli(const std::string& methodname, const std::string& args)
 {
-    return "> nyx-cli " + methodname + " " + args + "\n";
+    return "> suc-cli " + methodname + " " + args + "\n";
 }
 
 std::string HelpExampleRpc(const std::string& methodname, const std::string& args)

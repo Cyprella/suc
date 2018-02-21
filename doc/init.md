@@ -1,36 +1,36 @@
-Sample init scripts and service configuration for nyxd
+Sample init scripts and service configuration for sucd
 ==========================================================
 
 Sample scripts and configuration files for systemd, Upstart and OpenRC
 can be found in the contrib/init folder.
 
-    contrib/init/nyxd.service:    systemd service unit configuration
-    contrib/init/nyxd.openrc:     OpenRC compatible SysV style init script
-    contrib/init/nyxd.openrcconf: OpenRC conf.d file
-    contrib/init/nyxd.conf:       Upstart service configuration file
-    contrib/init/nyxd.init:       CentOS compatible SysV style init script
+    contrib/init/sucd.service:    systemd service unit configuration
+    contrib/init/sucd.openrc:     OpenRC compatible SysV style init script
+    contrib/init/sucd.openrcconf: OpenRC conf.d file
+    contrib/init/sucd.conf:       Upstart service configuration file
+    contrib/init/sucd.init:       CentOS compatible SysV style init script
 
 1. Service User
 ---------------------------------
 
-All three Linux startup configurations assume the existence of a "nyx" user
+All three Linux startup configurations assume the existence of a "suc" user
 and group.  They must be created before attempting to use these scripts.
-The OS X configuration assumes nyxd will be set up for the current user.
+The OS X configuration assumes sucd will be set up for the current user.
 
 2. Configuration
 ---------------------------------
 
-At a bare minimum, nyxd requires that the rpcpassword setting be set
+At a bare minimum, sucd requires that the rpcpassword setting be set
 when running as a daemon.  If the configuration file does not exist or this
-setting is not set, nyxd will shutdown promptly after startup.
+setting is not set, sucd will shutdown promptly after startup.
 
 This password does not have to be remembered or typed as it is mostly used
-as a fixed token that nyxd and client programs read from the configuration
+as a fixed token that sucd and client programs read from the configuration
 file, however it is recommended that a strong and secure password be used
 as this password is security critical to securing the wallet should the
 wallet be enabled.
 
-If nyxd is run with the "-server" flag (set by default), and no rpcpassword is set,
+If sucd is run with the "-server" flag (set by default), and no rpcpassword is set,
 it will use a special cookie file for authentication. The cookie is generated with random
 content when the daemon starts, and deleted when it exits. Read access to this file
 controls who can access it through RPC.
@@ -38,13 +38,13 @@ controls who can access it through RPC.
 By default the cookie is stored in the data directory, but it's location can be overridden
 with the option '-rpccookiefile'.
 
-This allows for running nyxd without having to do any manual configuration.
+This allows for running sucd without having to do any manual configuration.
 
 `conf`, `pid`, and `wallet` accept relative paths which are interpreted as
 relative to the data directory. `wallet` *only* supports relative paths.
 
 For an example configuration file that describes the configuration settings,
-see `contrib/debian/examples/nyx.conf`.
+see `contrib/debian/examples/suc.conf`.
 
 3. Paths
 ---------------------------------
@@ -53,24 +53,24 @@ see `contrib/debian/examples/nyx.conf`.
 
 All three configurations assume several paths that might need to be adjusted.
 
-Binary:              `/usr/bin/nyxd`  
-Configuration file:  `/etc/nyx/nyx.conf`  
-Data directory:      `/var/lib/nyxd`  
-PID file:            `/var/run/nyxd/nyxd.pid` (OpenRC and Upstart) or `/var/lib/nyxd/nyxd.pid` (systemd)  
-Lock file:           `/var/lock/subsys/nyxd` (CentOS)  
+Binary:              `/usr/bin/sucd`  
+Configuration file:  `/etc/suc/suc.conf`  
+Data directory:      `/var/lib/sucd`  
+PID file:            `/var/run/sucd/sucd.pid` (OpenRC and Upstart) or `/var/lib/sucd/sucd.pid` (systemd)  
+Lock file:           `/var/lock/subsys/sucd` (CentOS)  
 
 The configuration file, PID directory (if applicable) and data directory
-should all be owned by the nyx user and group.  It is advised for security
+should all be owned by the suc user and group.  It is advised for security
 reasons to make the configuration file and data directory only readable by the
-nyx user and group.  Access to nyx-cli and other nyxd rpc clients
+suc user and group.  Access to suc-cli and other sucd rpc clients
 can then be controlled by group membership.
 
 3b) Mac OS X
 
-Binary:              `/usr/local/bin/nyxd`  
-Configuration file:  `~/Library/Application Support/Nyx/nyx.conf`  
-Data directory:      `~/Library/Application Support/Nyx`
-Lock file:           `~/Library/Application Support/Nyx/.lock`
+Binary:              `/usr/local/bin/sucd`  
+Configuration file:  `~/Library/Application Support/Suc/suc.conf`  
+Data directory:      `~/Library/Application Support/Suc`
+Lock file:           `~/Library/Application Support/Suc/.lock`
 
 4. Installing Service Configuration
 -----------------------------------
@@ -81,19 +81,19 @@ Installing this .service file consists of just copying it to
 /usr/lib/systemd/system directory, followed by the command
 `systemctl daemon-reload` in order to update running systemd configuration.
 
-To test, run `systemctl start nyxd` and to enable for system startup run
-`systemctl enable nyxd`
+To test, run `systemctl start sucd` and to enable for system startup run
+`systemctl enable sucd`
 
 4b) OpenRC
 
-Rename nyxd.openrc to nyxd and drop it in /etc/init.d.  Double
+Rename sucd.openrc to sucd and drop it in /etc/init.d.  Double
 check ownership and permissions and make it executable.  Test it with
-`/etc/init.d/nyxd start` and configure it to run on startup with
-`rc-update add nyxd`
+`/etc/init.d/sucd start` and configure it to run on startup with
+`rc-update add sucd`
 
 4c) Upstart (for Debian/Ubuntu based distributions)
 
-Drop nyxd.conf in /etc/init.  Test by running `service nyxd start`
+Drop sucd.conf in /etc/init.  Test by running `service sucd start`
 it will automatically start on reboot.
 
 NOTE: This script is incompatible with CentOS 5 and Amazon Linux 2014 as they
@@ -101,22 +101,22 @@ use old versions of Upstart and do not supply the start-stop-daemon utility.
 
 4d) CentOS
 
-Copy nyxd.init to /etc/init.d/nyxd. Test by running `service nyxd start`.
+Copy sucd.init to /etc/init.d/sucd. Test by running `service sucd start`.
 
-Using this script, you can adjust the path and flags to the nyxd program by
-setting the NYXD and FLAGS environment variables in the file
-/etc/sysconfig/nyxd. You can also use the DAEMONOPTS environment variable here.
+Using this script, you can adjust the path and flags to the sucd program by
+setting the SUCD and FLAGS environment variables in the file
+/etc/sysconfig/sucd. You can also use the DAEMONOPTS environment variable here.
 
 4e) Mac OS X
 
-Copy org.nyx.nyxd.plist into ~/Library/LaunchAgents. Load the launch agent by
-running `launchctl load ~/Library/LaunchAgents/org.nyx.nyxd.plist`.
+Copy org.suc.sucd.plist into ~/Library/LaunchAgents. Load the launch agent by
+running `launchctl load ~/Library/LaunchAgents/org.suc.sucd.plist`.
 
-This Launch Agent will cause nyxd to start whenever the user logs in.
+This Launch Agent will cause sucd to start whenever the user logs in.
 
-NOTE: This approach is intended for those wanting to run nyxd as the current user.
-You will need to modify org.nyx.nyxd.plist if you intend to use it as a
-Launch Daemon with a dedicated nyx user.
+NOTE: This approach is intended for those wanting to run sucd as the current user.
+You will need to modify org.suc.sucd.plist if you intend to use it as a
+Launch Daemon with a dedicated suc user.
 
 5. Auto-respawn
 -----------------------------------

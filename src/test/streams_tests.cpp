@@ -4,7 +4,7 @@
 
 #include "streams.h"
 #include "support/allocators/zeroafterfree.h"
-#include "test/test_nyx.h"
+#include "test/test_suc.h"
 
 #include <boost/assign/std/vector.hpp> // for 'operator+=()'
 #include <boost/assert.hpp>

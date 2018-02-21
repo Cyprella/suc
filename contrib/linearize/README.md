@@ -1,9 +1,9 @@
 # Linearize
 Construct a linear, no-fork, best version of the blockchain.
 
-## Step 0: Install nyx_hash
+## Step 0: Install suc_hash
 
-https://github.com/nyxpay/nyx_hash
+https://github.com/sucpay/suc_hash
 
 ## Step 1: Download hash list
 

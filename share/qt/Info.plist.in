@@ -17,7 +17,7 @@
   <string>APPL</string>
 
   <key>CFBundleGetInfoString</key>
-  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Nyx Core developers, 2017-@COPYRIGHT_YEAR@ The Nyx Core developers</string>
+  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Suc Core developers, 2017-@COPYRIGHT_YEAR@ The Suc Core developers</string>
 
   <key>CFBundleShortVersionString</key>
   <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@</string>
@@ -29,16 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>Nyx-Qt</string>
+  <string>Suc-Qt</string>
   
   <key>CFBundleName</key>
-  <string>Nyx-Qt</string>
+  <string>Suc-Qt</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>org.nyx.Nyx-Qt</string>
+  <string>org.suc.Suc-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -46,10 +46,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>org.nyx.NyxPayment</string>
+      <string>org.suc.SucPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>nyx</string>
+        <string>suc</string>
       </array>
     </dict>
   </array>
@@ -58,9 +58,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>org.nyx.paymentrequest</string>
+      <string>org.suc.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>Nyx payment request</string>
+      <string>Suc payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -68,10 +68,10 @@
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.mime-type</key>
-        <string>application/x-nyx-payment-request</string>
+        <string>application/x-suc-payment-request</string>
         <key>public.filename-extension</key>
         <array>
-          <string>nyxpaymentrequest</string>
+          <string>sucpaymentrequest</string>
         </array>
       </dict>
     </dict>
@@ -84,7 +84,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>org.nyx.paymentrequest</string>
+        <string>org.suc.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>

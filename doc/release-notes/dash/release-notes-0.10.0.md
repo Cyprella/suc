@@ -82,7 +82,7 @@ changelog reaches back further but remains valid as all commits are visible now.
 0.10.15.13 Release notes
 ------------------------
 
-- Onyx Release!
+- Osuc Release!
 
 
 0.10.15.12 Release notes

@@ -4,22 +4,22 @@
 
 	* means the category has an associated class
 	
-	CNyxNetwork: NYX NETWORK (ROOT)
+	CSucNetwork: SUC NETWORK (ROOT)
 	has:
 		vector<CNetworkVariable> vecNetworkVariables;
-		vector<CNyxProject> vecProjects;
+		vector<CSucProject> vecProjects;
 		vector<CGovernanceObject> vecProposals;
 		vector<CBudgetContract> vecContracts;
 		vector<CBudgetUsers> vecUsers;
 
-	CNyxProject:
+	CSucProject:
 	has:
 		name
 		employees
 
 */
 
-	// NYX NETWORK (ROOT)
+	// SUC NETWORK (ROOT)
 	// 	-> NETWORK VARIABLE
 	// 		-> switch, setting
 	// 	-> CATEGORIES
@@ -49,7 +49,7 @@
 	// 			-> USER1 (only users are allowed here in this scope)
 	// 			-> USER2
 	// 		-> GROUP2 (EVO)
-	// 			-> VALUEOVERRIDE (STORE=NYXDRIVE)
+	// 			-> VALUEOVERRIDE (STORE=SUCDRIVE)
 	// 			-> USER1
 
 	// 	-> COMPANIES

@@ -10,10 +10,10 @@
 
 /**
  * Name of client reported in the 'version' message. Report the same name
- * for both nyxd and nyx-qt, to make it harder for attackers to
+ * for both sucd and suc-qt, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("Nyx Core");
+const std::string CLIENT_NAME("Suc Core");
 
 /**
  * Client version number

@@ -17,7 +17,7 @@
 #include "util.h"
 #include "utilstrencodings.h"
 
-#include "test/test_nyx.h"
+#include "test/test_suc.h"
 
 #include <boost/test/unit_test.hpp>
 

@@ -1,6 +1,6 @@
 all:
-	$(MAKE) -C .. nyx_test
+	$(MAKE) -C .. suc_test
 clean:
-	$(MAKE) -C .. nyx_test_clean
+	$(MAKE) -C .. suc_test_clean
 check:
-	$(MAKE) -C .. nyx_test_check
+	$(MAKE) -C .. suc_test_check

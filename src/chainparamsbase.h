@@ -9,8 +9,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between nyx-cli and nyxd)
- * of a given instance of the Nyx system.
+ * CBaseChainParams defines the base parameters (shared between suc-cli and sucd)
+ * of a given instance of the Suc system.
  */
 class CBaseChainParams
 {
