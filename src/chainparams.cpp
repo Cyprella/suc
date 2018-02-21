@@ -92,10 +92,10 @@ public:
          */
         pchMessageStart[0] = 0xaf;
         pchMessageStart[1] = 0x3c;
-        pchMessageStart[2] = 0x7b;
+        pchMessageStart[2] = 0x7c;
         pchMessageStart[3] = 0xcc;
         vAlertPubKey = ParseHex("041d33468b8753a0df3b8ddbd0b64edf0e7e2bbc4996ff7d7ceb32283496d72b40421eff54bf4a223f0af838253114ed27f1661a35086870e7693b52ff040ac641");
-        nDefaultPort = 4330;
+        nDefaultPort = 2330;
         nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin
         nPruneAfterHeight = 100000;
 
@@ -105,11 +105,11 @@ public:
         assert(genesis.hashMerkleRoot == uint256S("0xbb3755d2f47f9f30081b068778b2c607fa86359d74056801f7d40c2f1f697375"));
 
 
-        vSeeds.push_back(CDNSSeedData("node_nl", "node1.succoin.org"));
-        vSeeds.push_back(CDNSSeedData("node_ny", "node2.succoin.org"));
-        vSeeds.push_back(CDNSSeedData("node_tx", "node3.succoin.org"));
-        vSeeds.push_back(CDNSSeedData("node_ca", "node4.succoin.org"));
-        vSeeds.push_back(CDNSSeedData("node_as", "node5.succoin.org"));		
+        //vSeeds.push_back(CDNSSeedData("node_nl", "node1.succoin.org"));
+        //vSeeds.push_back(CDNSSeedData("node_ny", "node2.succoin.org"));
+        //vSeeds.push_back(CDNSSeedData("node_tx", "node3.succoin.org"));
+        //vSeeds.push_back(CDNSSeedData("node_ca", "node4.succoin.org"));
+        //vSeeds.push_back(CDNSSeedData("node_as", "node5.succoin.org"));		
 
         // Suc addresses start with 'N'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,53);
@@ -126,7 +126,7 @@ public:
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
 
-        fMiningRequiresPeers = true;
+        fMiningRequiresPeers = false
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
         fMineBlocksOnDemand = false;
@@ -137,19 +137,15 @@ public:
         strSporkPubKey = "04f44658e6f5fbfe63e1db3914aafb5116eb1bec6435493bae2b6afe329eadcd9598f0bdc4de24d20ea125d23d2a1eb509f63a8eda6e1d3f625af2501801ae27fa";
         strMasternodePaymentsPubKey = "04f44658e6f5fbfe63e1db3914aafb5116eb1bec6435493bae2b6afe329eadcd9598f0bdc4de24d20ea125d23d2a1eb509f63a8eda6e1d3f625af2501801ae27fa";
 
-        checkpointData = (CCheckpointData){
+        checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            ( 175, uint256S("0x0000008324b22109a4cd33aa15181a81e13b0ed6b4724fd4b0b9355637a65058"))
-            ( 5175, uint256S("0x000000000002b5b8886acc2c0613f871e1eff192c68bde64fded61a337652065"))
-            ( 7175, uint256S("0x000000000414eefe72278ca920180ab474a40142e8670f637051ce9161639458"))
-            ( 10060, uint256S("0x00000000062fb058cf59407a9f5b367112d443e2ad7335fd5744efcd9dfdbd93"))
-            ( 10306, uint256S("0x00000000005f0cf9410b0c5700ecc41589d9ef8f771352d4465008ae185e62bb"))
-            ( 10600, uint256S("0x000000000143db6fd3c07ff85bfd59515ac1493ff4abacaaedffbcb121bd3635")),
-            1518942216, // * UNIX timestamp of last checkpoint block
-            12481,    	// * total number of transactions between genesis and last checkpoint
+            (    0, uint256S("0x000005c7d93c5345fc71f55851feef6691bab133d74533e8219681a135d3bb04")),
+            1483076495, // * UNIX timestamp of last checkpoint block
+            0,     // * total number of transactions between genesis and last checkpoint
                         //   (the tx=... number in the SetBestChain debug.log lines)
-	    1000 		// * estimated number of transactions per day after checkpoint
+            500         // * estimated number of transactions per day after checkpoint
         };
+
     }
 };
 static CMainParams mainParams;
@@ -201,7 +197,7 @@ public:
         pchMessageStart[2] = 0xbd;
         pchMessageStart[3] = 0x2c;
         vAlertPubKey = ParseHex("0451c826df9385f36dfd8e23bde24b9fab40aac24521dc1358abd8af6582202fd2faf1b42607f4157039f5e9cd4998e8b74e15819dc601c2c5d748f93683baa4ea");
-        nDefaultPort = 4332;
+        nDefaultPort = 2332;
         nMaxTipAge = 0x7fffffff; // allow mining on top of old blocks for testnet
         nPruneAfterHeight = 1000;
 
